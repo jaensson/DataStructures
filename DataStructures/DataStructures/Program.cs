@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DataStructures;
+using System.Collections;
 
 internal class Program
 {
@@ -214,5 +215,46 @@ internal class Program
 
             return result;
         }
+
+        // SLUTET PÅ UPPGIFTERNA
+
+
+
+        // Egen stack
+        Stacken<char> s = new Stacken<char>();
+        string word = "SNAKE";
+
+        foreach(char character in word)
+        {
+            s.Push(character);
+        }
+
+        for(int i = s.Count; i > 0; i--)
+        {
+            Console.Write(s.Pop());
+        }
+        Console.WriteLine();
+
+        /*for(int i = 0; i < word.Length; i++)
+        {
+            Console.Write(s.Pop());
+        }*/
+
+        // Egen 
+
+        LinkedListan<int> list = new LinkedListan<int>();
+
+        list.AddLast(2);
+        
+
+        list.AddFirst(1);
+
+        list.Print();
+
+
+        Console.WriteLine();
+
+
+        
     }
 }

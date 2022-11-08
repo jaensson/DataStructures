@@ -248,6 +248,30 @@ internal class Program
         
 
         list.AddFirst(1);
+        list.AddFirst(40);
+        list.AddLast(60);
+        list.AddFirst(2);
+        list.AddFirst(4);
+        list.AddFirst(6);
+        list.AddFirst(8);
+        list.AddFirst(10);
+        list.AddFirst(12);
+
+
+        list.RemoveAt(5);
+        list.RemoveAt(5);
+
+        list.AddAt(400, 3);
+        list.AddAt(500, 0);
+
+        list.AddFirst(1000);
+
+
+        list.RemoveFirst();
+        list.RemoveFirst();
+
+
+        list.AddAt(500, 0);
 
         list.Print();
 

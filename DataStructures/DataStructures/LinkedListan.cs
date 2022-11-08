@@ -8,11 +8,6 @@ namespace DataStructures
 {
     internal class LinkedListan<T>
     {
-        /* TODO:
-         * AddFirst(), ska sätta in value på första positionen
-         * Add(), ska sätta in value på valfri plats
-         * Remove(), ska ta bort på valfri plats
-         */
         private Node<T> head;   // Head för Linked List och Root för trä
 
         public void AddLast(T value)
@@ -51,7 +46,41 @@ namespace DataStructures
 
             head = newNode;
             newNode.next = nextNode;
+        }
 
+        public void AddAt(T value, int pos)
+        {
+            Node<T> newNode = new Node<T>();
+            newNode.value = value;
+
+            if(head == null && pos == 0)
+            {
+                head = newNode;
+                return;
+            }
+
+            if(pos == 0)
+            {
+                Node<T> nextNode = head;
+                head = newNode;
+                newNode.next = nextNode;
+
+                return;
+            }
+
+            Node<T> current;
+            int nodeIndex = 0;
+            for(current = head; current.next != null; current = current.next)
+            {
+                if(nodeIndex + 1 == pos)
+                {
+                    break;
+                }
+                nodeIndex++;
+            }
+
+            newNode.next = current.next;
+            current.next = newNode;
         }
 
         public void Print()
@@ -60,6 +89,63 @@ namespace DataStructures
             {
                 Console.WriteLine(current.value);
             }
+        }
+
+        public T RemoveAt(int remove)
+        {
+            T value;
+
+            if(head.next == null)
+            {
+                value = head.value;
+                head = null;
+
+                return value;
+            }
+
+            Node<T> current;
+            int nodeIndex = 0;
+            for(current = head; current.next != null; current = current.next) {
+                if(nodeIndex + 1 == remove)
+                {
+                    break;
+                }
+                nodeIndex++;
+            }
+
+            if(remove == 0)
+            {
+                value = current.value;
+                head = current.next;
+
+                return value;
+            }
+
+            value = current.next.value;
+            current.next = current.next.next;
+
+
+            return value;
+
+        }
+
+        public T RemoveFirst()
+        {
+            T value;
+
+            if(head.next == null)
+            {
+                value = head.value;
+                head = null;
+
+                return value;
+            }
+
+            value = head.value;
+            head = head.next;
+
+            return value;
+
         }
 
         public T RemoveLast()
